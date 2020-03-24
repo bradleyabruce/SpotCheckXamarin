@@ -2,17 +2,22 @@
 using SpotCheck.Services;
 using SpotCheck.Utils;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-
+using Xamarin.Forms.Xaml;
 
 namespace SpotCheck.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class MapPage : ContentPage
     {
         IParkingLotService parkingLotService = new ParkingLotServiceImpl();
 
@@ -25,20 +30,20 @@ namespace SpotCheck.Views
             MapType = MapType.Street
         };
 
-        public MainPage()
+        public MapPage()
         {
             InitializeComponent();
         }
 
+
         protected override void OnAppearing()
         {
+            base.OnAppearing();
             timerOn = true;
             AddPinOnLoad();
             InitTimer();
         }
-
-
-
+       
         private async void AddPinOnLoad()
         {
             await MapUtils.RetrieveLocation();
