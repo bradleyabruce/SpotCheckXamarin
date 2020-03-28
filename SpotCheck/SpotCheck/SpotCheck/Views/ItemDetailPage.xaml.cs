@@ -25,11 +25,10 @@ namespace SpotCheck.Views
       public ItemDetailPage()
       {
          InitializeComponent();
-
          var item = new Item
          {
             Text = "Item 1",
-            Description = "This is an item description."
+            Description = "Ryan Bunker is the fucking best around"
          };
 
          viewModel = new ItemDetailViewModel(item);
