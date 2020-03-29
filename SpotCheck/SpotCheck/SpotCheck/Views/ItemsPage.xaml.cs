@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
 using SpotCheck.Models;
-using SpotCheck.Views;
 using SpotCheck.ViewModels;
+using Xamarin.Forms.Maps;
 
 namespace SpotCheck.Views
 {
@@ -19,8 +13,14 @@ namespace SpotCheck.Views
    public partial class ItemsPage : ContentPage
    {
       ItemsViewModel viewModel;
+        static double lat;
+        static double lng;
+        CustomMap customMap = new CustomMap()
+        {
+            MapType = MapType.Street
+        };
 
-      public ItemsPage()
+        public ItemsPage()
       {
          InitializeComponent();
 
@@ -35,11 +35,35 @@ namespace SpotCheck.Views
 
          await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
 
-         // Manually deselect item.
-         ItemsListView.SelectedItem = null;
+            AddPinOnLoad(item);
+
+            // Manually deselect item.
+            ItemsListView.SelectedItem = null;
       }
 
-      async void AddItem_Clicked(object sender, EventArgs e)
+        private void AddPinOnLoad(ParkingLot lot)
+        {
+
+            lat = lot.lat;
+            lng = lot.lon;
+
+
+            CustomPin lotPin = new CustomPin
+            {
+                Type = PinType.Place,
+                Position = new Position(lot.lat, lot.lon),
+                Label = lot.lotName + " Open Spots: " + lot.OpenSpots,
+                id = "lot" + lot.lotId,
+                url = ""
+            };
+            customMap.Pins.Add(lotPin);
+
+
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(lat, lng), Distance.FromMiles(0.1)));
+
+        }
+
+        async void AddItem_Clicked(object sender, EventArgs e)
       {
          await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
       }

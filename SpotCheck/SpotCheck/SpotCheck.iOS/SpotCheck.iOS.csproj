@@ -135,10 +135,4 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\SpotCheck\SpotCheck.csproj">
-      <Project>{C54B2A07-3A66-4388-8ED8-E5667336AED8}</Project>
-      <Name>SpotCheck</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

@@ -20,7 +20,7 @@ namespace SpotCheck.Services
 
             foreach (OldParkingLot lot in lots)
             {
-                ParkingLot newItem = new ParkingLot { Id = lot.lotId.ToString(), Text = lot.lotName, Description = "Open Parking Spots " + lot.OpenSpots };
+                ParkingLot newItem = new ParkingLot { Id = lot.lotId.ToString(), Text = lot.lotName, Description = "Open Parking Spots " + lot.OpenSpots, address = lot.address, city = lot.city, zipCode=lot.zipCode, state=lot.state, lat = lot.lat, lon = lot.lon };
                 items.Add(newItem);
             }
 

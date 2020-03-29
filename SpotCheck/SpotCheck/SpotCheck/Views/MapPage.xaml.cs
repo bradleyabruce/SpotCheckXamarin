@@ -1,16 +1,13 @@
 ﻿using SpotCheck.Models;
 using SpotCheck.Services;
 using SpotCheck.Utils;
+using SpotCheck.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using Xamarin.Forms.Xaml;
 
 namespace SpotCheck.Views
 {
@@ -23,7 +20,8 @@ namespace SpotCheck.Views
 
         static double lat;
         static double lng;
-        bool timerOn = false;
+        bool timerOn = false;     
+        ItemsViewModel viewModel;
 
         CustomMap customMap = new CustomMap()
         {
@@ -33,12 +31,16 @@ namespace SpotCheck.Views
         public MapPage()
         {
             InitializeComponent();
+            BindingContext = viewModel = new ItemsViewModel();
+
         }
 
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            if (viewModel.Items.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
             timerOn = true;
             AddPinOnLoad();
             InitTimer();

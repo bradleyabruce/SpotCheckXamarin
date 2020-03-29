@@ -52,7 +52,14 @@ namespace SpotCheck.ViewModels
                     ParkingLot parkingItem = new ParkingLot();
                     parkingItem.Id = lot.lotId.ToString();
                     parkingItem.Description = "Number of open parking spots " + lot.OpenSpots;
+                    parkingItem.lotName = lot.lotName;
                     parkingItem.Text = lot.lotName;
+                    parkingItem.address = lot.address;
+                    parkingItem.city = lot.city;
+                    parkingItem.zipCode = lot.zipCode;
+                    parkingItem.state = lot.state;
+                    parkingItem.lat = lot.lat;
+                    parkingItem.lon = lot.lon;
                     Items.Add(parkingItem);
                 }
             /*
