@@ -6,6 +6,6 @@ namespace SpotCheck.Models
 {
     public class ParkingLotList
     {
-        public List<ParkingLot> parkingLotList { get; set; }
+        public List<OldParkingLot> parkingLotList { get; set; }
     }
 }

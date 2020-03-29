@@ -62,7 +62,7 @@ namespace SpotCheck.Views
                         customMap.Pins.Add(customPin);
                         */
             ParkingLotList lots = await parkingLotService.GetParkingLots();
-            foreach (ParkingLot lot in lots.parkingLotList)
+            foreach (OldParkingLot lot in lots.parkingLotList)
             {
                 var lotPin = new CustomPin
                 {
@@ -98,7 +98,7 @@ namespace SpotCheck.Views
             */
 
             ParkingLotList lots = await parkingLotService.GetParkingLots();
-            foreach (ParkingLot lot in lots.parkingLotList)
+            foreach (OldParkingLot lot in lots.parkingLotList)
             {
                 var lotPin = new CustomPin
                 {
