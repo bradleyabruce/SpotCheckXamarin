@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              x:Class="SpotCheck.Views.MapPage">
     <Grid >
-        <map:Map x:Name="MyMap" MapType="Street" HasZoomEnabled="True">
+        <map:Map x:Name="MyMap" MapType="Street" HasZoomEnabled="True" IsShowingUser="True">
 
         </map:Map>
     </Grid>

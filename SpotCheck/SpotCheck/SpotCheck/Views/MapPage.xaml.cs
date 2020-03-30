@@ -33,6 +33,9 @@ namespace SpotCheck.Views
         public MapPage()
         {
             InitializeComponent();
+            Content = customMap;
+
+
         }
 
 
@@ -110,6 +113,7 @@ namespace SpotCheck.Views
                 };
                 customMap.Pins.Add(lotPin);
             }
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(lat, lng), Distance.FromMiles(0.1)));
 
         }
 

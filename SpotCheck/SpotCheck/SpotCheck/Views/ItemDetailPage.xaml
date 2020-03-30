@@ -13,8 +13,8 @@
         <Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="Medium"/>
         <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small"/>
         <Label Text="{Binding Item.address}" d:Text="Item address" FontSize="Small"/>
-        <map:Map x:Name="MyMap" MapType="Street" HasZoomEnabled="False"/>
-
+        <map:Map x:Name="MyMap" MapType="Street" HasZoomEnabled="False"  IsShowingUser="True"/>
+     
     </StackLayout>
     
 </ContentPage>

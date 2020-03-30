@@ -5,6 +5,9 @@ using Xamarin.Forms.Xaml;
 
 using SpotCheck.Models;
 using SpotCheck.ViewModels;
+using SpotCheck.Utils;
+using Xamarin.Forms.Maps;
+using SpotCheck.Services;
 
 namespace SpotCheck.Views
 {
@@ -13,9 +16,19 @@ namespace SpotCheck.Views
    [DesignTimeVisible(false)]
    public partial class ItemDetailPage : ContentPage
    {
-      ItemDetailViewModel viewModel;
+        IParkingLotService parkingLotService = new ParkingLotServiceImpl();
 
-      public ItemDetailPage(ItemDetailViewModel viewModel)
+        static double lat;
+        static double lng;
+        ItemDetailViewModel viewModel;
+
+        CustomMap customMap = new CustomMap()
+        {
+            MapType = MapType.Street
+        };
+
+
+        public ItemDetailPage(ItemDetailViewModel viewModel)
       {
          InitializeComponent();
 
@@ -33,6 +46,30 @@ namespace SpotCheck.Views
 
          viewModel = new ItemDetailViewModel(item);
          BindingContext = viewModel;
-      }
-   }
+            AddPinOnLoad();
+            Content = customMap;
+        }
+
+        private void AddPinOnLoad()
+        {
+
+            lat = viewModel.Item.lat;
+            lng = viewModel.Item.lon;
+
+
+            CustomPin lotPin = new CustomPin
+            {
+                Type = PinType.Place,
+                Position = new Position(viewModel.Item.lat, viewModel.Item.lon),
+                Label = viewModel.Item.lotName + " Open Spots: " + viewModel.Item.OpenSpots,
+                id = "lot" + viewModel.Item.lotId,
+                url = ""
+            };
+            customMap.Pins.Add(lotPin);
+
+
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(lat, lng), Distance.FromMiles(0.1)));
+
+        }
+    }
 }
