@@ -8,35 +8,35 @@ using SpotCheck.Models;
 
 namespace SpotCheck.Views
 {
-   // Learn more about making custom code visible in the Xamarin.Forms previewer
-   // by visiting https://aka.ms/xamarinforms-previewer
-   [DesignTimeVisible(false)]
-   public partial class NewItemPage : ContentPage
-   {
-      public Item Item { get; set; }
+    // Learn more about making custom code visible in the Xamarin.Forms previewer
+    // by visiting https://aka.ms/xamarinforms-previewer
+    [DesignTimeVisible(false)]
+    public partial class NewItemPage : ContentPage
+    {
+        public ParkingLot Item { get; set; }
 
-      public NewItemPage()
-      {
-         InitializeComponent();
+        public NewItemPage()
+        {
+            InitializeComponent();
 
-         Item = new Item
-         {
-            Text = "Item name",
-            Description = "This is an item description."
-         };
+            Item = new ParkingLot
+            {
+                Text = "Item name",
+                Description = "This is an item description."
+            };
 
-         BindingContext = this;
-      }
+            BindingContext = this;
+        }
 
-      async void Save_Clicked(object sender, EventArgs e)
-      {
-         MessagingCenter.Send(this, "AddItem", Item);
-         await Navigation.PopModalAsync();
-      }
+        async void Save_Clicked(object sender, EventArgs e)
+        {
+            MessagingCenter.Send(this, "AddItem", Item);
+            await Navigation.PopModalAsync();
+        }
 
-      async void Cancel_Clicked(object sender, EventArgs e)
-      {
-         await Navigation.PopModalAsync();
-      }
-   }
+        async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+    }
 }

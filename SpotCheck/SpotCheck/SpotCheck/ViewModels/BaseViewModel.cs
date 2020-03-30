@@ -12,7 +12,7 @@ namespace SpotCheck.ViewModels
 {
    public class BaseViewModel : INotifyPropertyChanged
    {
-      public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+      public IDataStore<ParkingLot> DataStore => DependencyService.Get<IDataStore<ParkingLot>>();
 
       bool isBusy = false;
       public bool IsBusy

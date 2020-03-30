@@ -11,7 +11,8 @@ namespace SpotCheck
 
       public App()
       {
-         InitializeComponent();
+         
+            InitializeComponent();
 
          DependencyService.Register<MockDataStore>();
          MainPage = new MainPage();

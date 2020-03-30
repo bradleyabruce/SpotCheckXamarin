@@ -3,15 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d"
              x:Class="SpotCheck.Views.ItemDetailPage"
              Title="{Binding Title}">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
+        <Label Text="Garage:" FontSize="Medium" />
+        <Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="Medium"/>
         <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small"/>
+        <Label Text="{Binding Item.address}" d:Text="Item address" FontSize="Small"/>
+        <map:Map x:Name="MyMap" MapType="Street" HasZoomEnabled="False"  IsShowingUser="True"/>
+     
     </StackLayout>
     
 </ContentPage>
