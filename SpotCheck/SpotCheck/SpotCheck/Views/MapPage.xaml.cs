@@ -25,27 +25,30 @@ namespace SpotCheck.Views
 
         CustomMap customMap = new CustomMap()
         {
-            MapType = MapType.Street
+            MapType = MapType.Street,
+            IsShowingUser = true
         };
 
         public MapPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new ItemsViewModel();
             AddPinOnLoad();
-
             Content = customMap;
+            BindingContext = viewModel = new ItemsViewModel();
+      
 
         }
 
 
         protected override void OnAppearing()
         {
+            timerOn = false;
             base.OnAppearing();
-      
-            timerOn = true;
             AddPinOnLoad();
+
             Content = customMap;
+            timerOn = true;
+          
             InitTimer();
         }
        
@@ -128,7 +131,7 @@ namespace SpotCheck.Views
 
         public void InitTimer()
         {
-            int secondsInterval = 1;
+            int secondsInterval = 15;
             Device.StartTimer(TimeSpan.FromSeconds(secondsInterval), () =>
             {
                 Device.BeginInvokeOnMainThread(() => AddPinsToMap());

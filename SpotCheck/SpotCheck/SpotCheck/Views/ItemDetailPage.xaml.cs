@@ -8,6 +8,7 @@ using SpotCheck.ViewModels;
 using SpotCheck.Utils;
 using Xamarin.Forms.Maps;
 using SpotCheck.Services;
+using System.Collections.Generic;
 
 namespace SpotCheck.Views
 {
@@ -51,21 +52,24 @@ namespace SpotCheck.Views
          AddPinOnLoad();
 
         }
-        private void AddPinOnLoad()
+        private async void AddPinOnLoad()
         {
            
             lat = viewModel.Item.lat;
             lng = viewModel.Item.lon;
 
+            ParkingLotList lots = await parkingLotService.GetParkingLots();
 
+            OldParkingLot lot = lots.parkingLotList[0];
             CustomPin lotPin = new CustomPin
                 {
                     Type = PinType.Place,
-                    Position = new Position(viewModel.Item.lat, viewModel.Item.lon),
-                    Label = viewModel.Item.lotName + " Open Spots: " + viewModel.Item.OpenSpots,
+                    Position = new Position(lot.lat, lot.lon),
+                    Label = viewModel.Item.lotName + " Open Spots: " + lot.OpenSpots,
                     id = "lot" + viewModel.Item.lotId,
                     url = ""
                 };
+            customMap.Pins.Clear();
                 customMap.Pins.Add(lotPin);
            
 

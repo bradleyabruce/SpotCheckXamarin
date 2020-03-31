@@ -8,15 +8,7 @@
              x:Class="SpotCheck.Views.MapPage">
     <Grid >
         <map:Map MapType="Street" HasZoomEnabled="True" HasScrollEnabled="True"  IsShowingUser="True">
-            <map:Map.ItemTemplate>
-                <DataTemplate>
-                    <map:Pin Position ="{Binding Position}"
-                              Address="{Binding Address}"
-                              Label="{Binding PlaceName}">
-
-                    </map:Pin>
-                </DataTemplate>
-            </map:Map.ItemTemplate>
+           
             </map:Map>
     </Grid>
 </ContentPage>
