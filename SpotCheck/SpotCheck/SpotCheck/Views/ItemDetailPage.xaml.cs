@@ -34,6 +34,7 @@ namespace SpotCheck.Views
 
             BindingContext = this.viewModel = viewModel;
             AddPinOnLoad();
+            
         }
 
       public ItemDetailPage()
@@ -69,6 +70,7 @@ namespace SpotCheck.Views
            
 
             customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(lat, lng), Distance.FromMiles(0.1)));
+            Content = customMap;
 
         }
     }

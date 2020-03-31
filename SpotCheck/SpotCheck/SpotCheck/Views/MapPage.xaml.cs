@@ -32,6 +32,9 @@ namespace SpotCheck.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new ItemsViewModel();
+            AddPinOnLoad();
+
+            Content = customMap;
 
         }
 
@@ -39,10 +42,10 @@ namespace SpotCheck.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+      
             timerOn = true;
             AddPinOnLoad();
+            Content = customMap;
             InitTimer();
         }
        
@@ -66,6 +69,7 @@ namespace SpotCheck.Views
             ParkingLotList lots = await parkingLotService.GetParkingLots();
             foreach (OldParkingLot lot in lots.parkingLotList)
             {
+             
                 var lotPin = new CustomPin
                 {
                     Type = PinType.Place,
@@ -74,6 +78,11 @@ namespace SpotCheck.Views
                     id = "lot" + lot.lotId,
                     url = ""
                 };
+                if (customMap.Pins.Contains(lotPin))
+                {
+                    customMap.Pins.Remove(lotPin);
+                }
+                customMap.Pins.Clear();
                 customMap.Pins.Add(lotPin);
             }
 
@@ -102,6 +111,7 @@ namespace SpotCheck.Views
             ParkingLotList lots = await parkingLotService.GetParkingLots();
             foreach (OldParkingLot lot in lots.parkingLotList)
             {
+             
                 var lotPin = new CustomPin
                 {
                     Type = PinType.Place,
@@ -110,6 +120,7 @@ namespace SpotCheck.Views
                     id = "lot" + lot.lotId,
                     url = "",
                 };
+                customMap.Pins.Clear();
                 customMap.Pins.Add(lotPin);
             }
 
@@ -117,7 +128,7 @@ namespace SpotCheck.Views
 
         public void InitTimer()
         {
-            int secondsInterval = 5;
+            int secondsInterval = 1;
             Device.StartTimer(TimeSpan.FromSeconds(secondsInterval), () =>
             {
                 Device.BeginInvokeOnMainThread(() => AddPinsToMap());

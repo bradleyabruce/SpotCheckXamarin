@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              x:Class="SpotCheck.Views.MapPage">
     <Grid >
-        <map:Map MapType="Street" HasZoomEnabled="True" HasScrollEnabled="True">
+        <map:Map MapType="Street" HasZoomEnabled="True" HasScrollEnabled="True"  IsShowingUser="True">
             <map:Map.ItemTemplate>
                 <DataTemplate>
                     <map:Pin Position ="{Binding Position}"

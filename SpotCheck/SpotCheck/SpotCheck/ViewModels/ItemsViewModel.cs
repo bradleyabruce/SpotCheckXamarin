@@ -19,7 +19,7 @@ namespace SpotCheck.ViewModels
 
       public ItemsViewModel()
       {
-         Title = "Map";
+         Title = "Nearby Parking Lots";
          Items = new ObservableCollection<ParkingLot>();
          LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 

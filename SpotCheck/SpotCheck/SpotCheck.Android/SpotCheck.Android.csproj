@@ -88,5 +88,11 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpotCheck\SpotCheck.csproj">
+      <Project>{2e1b28b6-6e4b-494f-b935-a0733f8d1e68}</Project>
+      <Name>SpotCheck</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

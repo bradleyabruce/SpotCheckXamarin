@@ -56,6 +56,7 @@ namespace SpotCheck.Views
                 id = "lot" + lot.lotId,
                 url = ""
             };
+            customMap.Pins.Clear();
             customMap.Pins.Add(lotPin);
 
 
@@ -72,8 +73,8 @@ namespace SpotCheck.Views
       {
          base.OnAppearing();
 
-         if (viewModel.Items.Count == 0)
-            viewModel.LoadItemsCommand.Execute(null);
+       
+        viewModel.LoadItemsCommand.Execute(null);
       }
    }
 }
