@@ -69,6 +69,7 @@ namespace SpotCheck.Views
                         customMap.Pins.Clear();
                         customMap.Pins.Add(customPin);
                         */
+            customMap.Pins.Clear();
             ParkingLotList lots = await parkingLotService.GetParkingLots();
             foreach (OldParkingLot lot in lots.parkingLotList)
             {
@@ -81,11 +82,8 @@ namespace SpotCheck.Views
                     id = "lot" + lot.lotId,
                     url = ""
                 };
-                if (customMap.Pins.Contains(lotPin))
-                {
-                    customMap.Pins.Remove(lotPin);
-                }
-                customMap.Pins.Clear();
+            
+               
                 customMap.Pins.Add(lotPin);
             }
 
@@ -110,6 +108,7 @@ namespace SpotCheck.Views
             customMap.Pins.Clear();
             customMap.Pins.Add(customPin);
             */
+            customMap.Pins.Clear();
 
             ParkingLotList lots = await parkingLotService.GetParkingLots();
             foreach (OldParkingLot lot in lots.parkingLotList)
@@ -123,7 +122,6 @@ namespace SpotCheck.Views
                     id = "lot" + lot.lotId,
                     url = "",
                 };
-                customMap.Pins.Clear();
                 customMap.Pins.Add(lotPin);
             }
 

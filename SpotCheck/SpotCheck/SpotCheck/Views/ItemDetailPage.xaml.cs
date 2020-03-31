@@ -54,22 +54,31 @@ namespace SpotCheck.Views
         }
         private async void AddPinOnLoad()
         {
-           
+
             lat = viewModel.Item.lat;
             lng = viewModel.Item.lon;
 
             ParkingLotList lots = await parkingLotService.GetParkingLots();
+            OldParkingLot lot;
+            if (viewModel.Item.Id != "1")
+            {
+                lot = lots.parkingLotList[1];
+            }
+            else
+            {
+                 lot = lots.parkingLotList[0];
 
-            OldParkingLot lot = lots.parkingLotList[0];
+            }
+
             CustomPin lotPin = new CustomPin
                 {
                     Type = PinType.Place,
                     Position = new Position(lot.lat, lot.lon),
                     Label = viewModel.Item.lotName + " Open Spots: " + lot.OpenSpots,
-                    id = "lot" + viewModel.Item.lotId,
+                    id = "lot" + viewModel.Item.Id,
                     url = ""
                 };
-            customMap.Pins.Clear();
+            
                 customMap.Pins.Add(lotPin);
            
 

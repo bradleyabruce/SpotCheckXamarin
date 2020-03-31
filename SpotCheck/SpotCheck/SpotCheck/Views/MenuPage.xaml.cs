@@ -20,9 +20,11 @@ namespace SpotCheck.Views
 
          menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Nearby Lots" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem{Id = MenuItemType.Map, Title = "Map"}
+             
+             new HomeMenuItem {Id = MenuItemType.Browse, Title="Nearby Lots" },
+             new HomeMenuItem{Id = MenuItemType.Map, Title = "Map"},
+             new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+
             };
 
          ListViewMenu.ItemsSource = menuItems;

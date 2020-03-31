@@ -43,6 +43,7 @@ namespace SpotCheck.Views
 
         private void AddPinOnLoad(ParkingLot lot)
         {
+            customMap.Pins.Clear();
 
             lat = lot.lat;
             lng = lot.lon;
@@ -56,7 +57,6 @@ namespace SpotCheck.Views
                 id = "lot" + lot.lotId,
                 url = ""
             };
-            customMap.Pins.Clear();
             customMap.Pins.Add(lotPin);
 
 
